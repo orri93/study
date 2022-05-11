@@ -20,11 +20,11 @@ library(tidyverse)
 library(knitr)
 ```
 
-# 1 
+# 1
 
 ## 1.1
 
-Problem 1.1 
+### Problem 1.1
 
 ```{r chapter 1 problem 1.1}
 df <- data.frame(
@@ -49,4 +49,30 @@ sdm1 = sqrt(sum(df$dj2p))
 sdm2 = sqrt(ej2p - ej * ej)
 kable(df, caption = "Summary")
 ```
+
+## 1.2
+
+### Example 1.2
+
+$$x\left( t \right) = \frac{1}{2} g t^{t}$$
+
+The probability density (Eq. 1.14)
+
+$$\rho\left( x \right) = \frac{1}{2\sqrt{hx}},\left( 0\leqslant x\leqslant h \right)$$
+
+The integral between 0 and h
+
+Confirmed with [Integral Calculator](https://www.integral-calculator.com/)
+
+$$\int_{0}^{h} \rho\left( x \right) dx = \int_{0}^{h} \frac{1}{2\sqrt{hx}} dx = \frac{1}{2\sqrt{h}}\left( 2x^{\frac{1}{2}} \right) \Big|_0^h = \frac{\sqrt{hx}}{h} \Big|_0^h = 1$$
+
+The average distance (Eq. 1.17)
+
+Confirmed with [Integral Calculator](https://www.integral-calculator.com/)
+
+$$\mathbb{E} \left[ x \right] = \int_{0}^{h} x\cdot  \rho\left( x \right) dx = \int_{0}^{h} x\frac{1}{2\sqrt{hx}} dx = \frac{1}{2\sqrt{h}}\left( \frac{2}{3}x^{\frac{3}{2}} \right) \Big|_0^h = \frac{x^{2}}{3\sqrt{hx}} \Big|_0^h = \frac{h}{3}$$
+
+### Problem 1.2
+
+$$\mathbb{E} \left[ x^{2} \right] = \int_{0}^{h} x^{2}\cdot  \rho\left( x \right) dx = \int_{0}^{h} x^{2}\frac{1}{2\sqrt{hx}} dx = \frac{x^{3}}{5\sqrt{hx}} \Big|_0^h = \frac{h^{2}}{5}$$
 
