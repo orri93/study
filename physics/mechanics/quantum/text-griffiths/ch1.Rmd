@@ -17,6 +17,7 @@ This is my notebook for studying of The "Introduction to Quantum Mechanics" thir
 
 ```{r dependencies, message=FALSE, warning=FALSE}
 library(tidyverse)
+library(knitr)
 ```
 
 # 1 
@@ -46,6 +47,6 @@ df <- df %>% mutate(
   dj2p = dj2 * p)
 sdm1 = sqrt(sum(df$dj2p))
 sdm2 = sqrt(ej2p - ej * ej)
-df
+kable(df, caption = "Summary")
 ```
 
