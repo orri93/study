@@ -37,6 +37,7 @@ df <- df %>% mutate(
   jp = j * p,
   j2 = j * j)
 ej = sum(df$jp)
+ej2 = ej * ej
 df <- df %>% mutate(
   dj  = j - ej,
   j2p = j2 * p)
@@ -45,10 +46,28 @@ df <- df %>% mutate(
   dj2 = dj * dj)
 df <- df %>% mutate(
   dj2p = dj2 * p)
-sdm1 = sqrt(sum(df$dj2p))
-sdm2 = sqrt(ej2p - ej * ej)
+sdj2p = sum(sum(df$dj2p))
+sdm1 = sqrt(sdj2p)
+dej2pej = ej2p - ej * ej
+sdm2 = sqrt(dej2pej)
 kable(df, caption = "Summary")
 ```
+
+a)
+
+$$\left\langle j \right\rangle = `r toString(ej)`$$
+
+$$\left\langle j \right\rangle ^{2} = `r toString(ej2)`$$
+
+$$\left\langle j^{2} \right\rangle = \frac{1}{N} \sum_{}^{}j^{2}N\left( j \right) = `r toString(ej2p)`$$
+
+b)
+
+$$\sigma^{2} = \frac{1}{N} \sum_{}^{}\left( \Delta j \right)^{2}N\left( j \right) = `r toString(sdj2p)` \Rightarrow \sigma = \sqrt{`r toString(sdj2p)`} = `r toString(sdm1)`$$
+
+c)
+
+$$\sigma^{2} = \left\langle j^{2} \right\rangle - \left\langle j \right\rangle^{2} = `r toString(ej2p)` - `r toString(ej)`^{2} = `r toString(dej2pej)` \Rightarrow \sigma = \sqrt{`r toString(dej2pej)`} = `r toString(sdm2)`$$
 
 ## 1.2
 
@@ -70,9 +89,17 @@ The average distance (Eq. 1.17)
 
 Confirmed with [Integral Calculator](https://www.integral-calculator.com/)
 
-$$\mathbb{E} \left[ x \right] = \int_{0}^{h} x\cdot  \rho\left( x \right) dx = \int_{0}^{h} x\frac{1}{2\sqrt{hx}} dx = \frac{1}{2\sqrt{h}}\left( \frac{2}{3}x^{\frac{3}{2}} \right) \Big|_0^h = \frac{x^{2}}{3\sqrt{hx}} \Big|_0^h = \frac{h}{3}$$
+$$\left\langle x \right\rangle = \int_{0}^{h} x\cdot  \rho\left( x \right) dx = \int_{0}^{h} x\frac{1}{2\sqrt{hx}} dx = \frac{1}{2\sqrt{h}}\left( \frac{2}{3}x^{\frac{3}{2}} \right) \Big|_0^h = \frac{x^{2}}{3\sqrt{hx}} \Big|_0^h = \frac{h}{3}$$
 
 ### Problem 1.2
 
-$$\mathbb{E} \left[ x^{2} \right] = \int_{0}^{h} x^{2}\cdot  \rho\left( x \right) dx = \int_{0}^{h} x^{2}\frac{1}{2\sqrt{hx}} dx = \frac{x^{3}}{5\sqrt{hx}} \Big|_0^h = \frac{h^{2}}{5}$$
+a)
+
+The expected value of x squared
+
+$$\left\langle x^{2} \right\rangle = \int_{0}^{h} x^{2}\cdot  \rho\left( x \right) dx = \int_{0}^{h} x^{2}\frac{1}{2\sqrt{hx}} dx = \frac{x^{3}}{5\sqrt{hx}} \Big|_0^h = \frac{h^{2}}{5}$$
+
+The Standard deviation
+
+$$\sigma^{2} = \left\langle x^{2} \right\rangle - \left\langle x \right\rangle^{2} = \frac{h^{2}}{5} - \left( \frac{h}{3} \right)^{2} = \frac{4}{45} h^{2} \Rightarrow \sigma = \frac{2}{3\sqrt{5}} h = 0.2981h$$
 
