@@ -40,3 +40,6 @@ vignettes/*.pdf
 
 # Sage
 .ipynb_checkpoints/
+
+# CC output
+a.out
